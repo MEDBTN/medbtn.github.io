@@ -1,0 +1,103 @@
+
+<app-breadcrumbs title="Consultation" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+
+
+<!-- Start Form Medication  -->
+<div class="row">
+  <!-- start Card  -->
+  <div class="card">
+    <!--  Start card header -->
+    <div class="card-header align-items-center d-flex">
+      <h4 class="card-title mb-0 flex-grow-1">Medicament</h4>
+    </div>
+    <!--  End card header -->
+    <!-- Start card body -->
+    <div class="card-body p-4">
+      <div class="row justify-content-around ">
+        <div class="col-sm-12 col-lg-5 me-2">
+          <!-- Start Edit Medicament Form  -->
+          <form [formGroup]="myForm" class="needs-validation" (ngSubmit)="onSubmit()">
+            <div class="row mb-2">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" formControlName="name" required />
+                <div *ngIf="myForm.get('name')?.invalid && myForm.get('name')?.touched" class="text-danger">
+                  <div *ngIf="myForm.get('name')?.hasError('required')">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="form-group">
+                <label for="posologie">Posologie:</label>
+                <input type="text" id="posologie" class="form-control" formControlName="posologie" required />
+                <div *ngIf="myForm.get('posologie')?.invalid && myForm.get('posologie')?.touched" class="text-danger">
+                  <div *ngIf="myForm.get('posologie')?.hasError('required')">
+                    Posologie is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 me-2">
+                    <input type="text" id="quantity" class="form-control" formControlName="quantity" required />
+                    <div *ngIf="myForm.get('quantity')?.invalid && myForm.get('quantity')?.touched" class="text-danger">
+                      <div *ngIf="myForm.get('quantity')?.hasError('required')">
+                        Quantity is required.
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn btn-primary"> {{ isEdit? 'Modifier':'Ajouter' }} </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- End Edit Medicament Form -->
+        </div>
+
+        <!-- Start col -->
+        <div class="col-sm-12 col-lg-5">
+          <div *ngIf="ordonnance.length>0;else blancktemplate">
+            <div class="col mx-2 p-2 shadow" *ngFor="let item of ordonnance let i = index">
+              <!-- Start Medicament List  -->
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1">
+                  <h6 class="fs-15 fw-semibold mb-0">
+                    {{ item.medicament }}
+                  </h6>
+                </div>
+                <h3 class="bx bxs-edit me-3" style="cursor: pointer; color: rgb(172, 77, 255)" (click)="onEdit(i)">
+                </h3>
+                <h3 class="ri-delete-bin-fill" style="cursor: pointer; color: rgb(255, 77, 77)" (click)="onDelete(i)">
+                </h3>
+              </div>
+              <div class="text-muted d-inline-flex">
+                <p class="mb-0 me-3"> {{item.dose}}</p>
+                <p class="mb-0"> {{item.qte}}</p>
+              </div>
+            </div>
+            <!-- End Medicament List -->
+          </div>
+          <ng-template #blancktemplate>
+            <div class="card justify-content-center align-items-center my-2 py-3 mx-auto px-auto">
+              <div class="card-body">
+                <h2 class="text-center">Ordonance</h2>
+                <p class="lead">Try to fill the medicaments and add them to ordonance</p>
+              </div>
+            </div>
+
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+    <!-- End Card Body  -->
+  </div>
+  <!-- End Card  -->
+</div>

@@ -1,0 +1,58 @@
+
+<app-breadcrumbs title="Patient List" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+
+<div class="card">
+  <div class="card-body mt-2">
+    <div class="d-flex align-items-center justify-content-between my-3">
+      <div class="flex-item">
+        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" id="create-btn"
+          data-bs-target="#showModal" (click)="openAddModal()"><i class="ri-add-line align-bottom"></i>
+          Add Patient</button>
+      </div>
+      <div class="flex-item col-sm-auto col-lg-4">
+        <div class="search-bar">
+          <form class="search-form d-flex align-items-center" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword" (input)="searchPatients()"
+              [(ngModel)]="state.keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+          </form>
+        </div><!-- End Search Bar -->
+      </div>
+    </div>
+
+
+    <div class="table-responsive table-card mb-1">
+      <table class="table">
+        <thead>
+          <tr class="bg-light text-muted">
+            <th>Name</th>
+            <th> Age </th>
+            <th>Gender</th>
+            <th> Phone </th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients; let i=index">
+            <td> {{patient.name}} </td>
+            <td> {{patient.age}} </td>
+            <td> {{patient.gender}} </td>
+            <td> {{patient.phone}} </td>
+            <td>
+              <div class="d-flex gap-2 justify-content-center align-items-center">
+                <button class="btn btn-sm btn-success" title="Edit Patient" (click)="openEditModal(patient)">
+                  <i class="ri-edit-line"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" title="Delete Patient" (click)="onDelete(i)">
+                  <i class="ri-delete-bin-2-line"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="modal-header bg-light p-3">
+  <h5 class="modal-title" id="exampleModalLabel">Ajouter Patient</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+    (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<form (ngSubmit)="onSubmit()" [formGroup]="patientForm" class="tablelist-form" autocomplete="off">
+  <div class="modal-body">
+    <!-- Start Row  -->
+    <div class="vstack gap-2 mx-auto m-3">
+      <div class="col mb-3">
+        <label for="name-field" class="form-label">Name</label>
+        <input type="text" id="name-field" class="form-control" placeholder="Enter fullname" required
+          formControlName="name" [ngClass]="{ 'is-invalid': submitted && form['name'].errors }" />
+        <div class="invalid-feedback">Entrer le nom de patient.</div>
+      </div>
+
+      <div class="col mb-3">
+        <label for="age-field" class="form-label">Age </label>
+        <input type="number" class="form-control " formControlName="age"
+          [ngClass]="{ 'is-invalid': submitted && form['age'].errors }">
+        <div class="invalid-feedback">Enter age</div>
+      </div>
+
+      <div class="col mb-3">
+        <label for="sexe-field" class="form-label">Gender</label>
+        <ng-select class="custom" [items]="sexes" bindLabel="label" bindValue="value" formControlName="gender"
+          [ngClass]="{ 'is-invalid': submitted && form['gender'].errors }">
+        </ng-select>
+        <div class="invalid-feedback">please enter gender</div>
+      </div>
+      <div class="col mb-3">
+        <label for="phone-field" class="form-label">Phone</label>
+        <input type="text" id="phone-field" class="form-control" placeholder="Enter Phone number" required
+          formControlName="phone" [ngClass]="{ 'is-invalid': submitted && form['phone'].errors }" />
+        <div class="invalid-feedback">Enter Phone.</div>
+      </div>
+
+    </div>
+    <!-- End Row -->
+
+
+  </div>
+  <!-- End Model Body  -->
+
+  <!-- Start Footer Model  -->
+  <div class="modal-footer">
+    <div class="hstack gap-2 justify-content-end">
+      <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+        (click)="activeModal.dismiss('Close click')">Annuler</button>
+      <button type="submit" class="btn btn-success" id="add-btn">
+        <span *ngIf="!isLoading">
+          {{patient ? 'Modifier Patient' : 'Ajouter Patient' }}
+        </span>
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</form>

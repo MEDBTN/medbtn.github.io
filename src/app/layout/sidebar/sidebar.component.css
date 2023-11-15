@@ -1,0 +1,166 @@
+.sidenav {
+  background-color: #fff;
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  bottom: 0px;
+  width: 300px;
+  z-index: 1;
+  transition: all 0.3s;
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #aab7cf transparent;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  width: 5rem;
+  height: 100vh;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    padding: 0.938rem 0.938rem 0 0.938rem;
+    width: 100%;
+
+    .menu-icon {
+      background: #F6F9FF;
+      color: #4154f1;
+      text-align: center;
+      width: 3rem;
+      min-width: 3rem;
+      border-radius: 0.313rem;
+      padding: 0.313rem;
+      margin: 5px 0px 24px -18px;
+      font-size: 24px;
+      font-weight: 900;
+      cursor: pointer;
+      border: none;
+    }
+
+    .menu-title {
+      margin-left: 1rem;
+      font-size: 16px;
+      font-weight: 700;
+      color: #899bbd;
+    }
+
+    .btn-close {
+      margin-left: auto;
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: transparent;
+      border: none;}
+
+    .btn-close i {
+      color: #fff;
+      font-size: 24px;
+    }
+  }
+}
+
+.sidenav-collapsed {
+  width: 16.5625rem;
+}
+
+.sidenav-nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidenav-nav li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidenav-nav .nav-item {
+  margin-bottom: 5px;
+}
+
+.sidenav-nav .nav-heading {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #899bbd;
+  font-weight: 600;
+  margin: 10px 0 5px 15px;
+}
+
+.sidenav-nav .nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4154f1;
+  transition: 0.3;
+  background: #f6f9ff;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.sidenav-nav .nav-link i {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #4154f1;
+}
+
+.sidenav-nav .nav-link.collapsed {
+  color: #012970;
+  background: #fff;
+}
+
+.sidenav-nav .nav-link.collapsed i {
+  color: #899bbd;
+}
+
+.sidenav-nav .nav-link:hover {
+  color: #4154f1;
+  background: #f6f9ff;
+}
+
+.sidenav-nav .nav-link:hover i {
+  color: #4154f1;
+}
+
+.sidenav-nav .nav-link .bi-chevron-down {
+  margin-right: 0;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sidenav-nav .nav-link:not(.collapsed) .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+.sidenav-nav .nav-content {
+  padding: 5px 0 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidenav-nav .nav-content a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #012970;
+  transition: 0.3;
+  padding: 10px 0 10px 40px;
+  transition: 0.3s;
+}
+
+.sidenav-nav .nav-content a i {
+  font-size: 6px;
+  margin-right: 8px;
+  line-height: 0;
+  border-radius: 50%;
+}
+
+.sidenav-nav .nav-content a:hover,
+.sidenav-nav .nav-content a.active {
+  color: #4154f1;
+}
+
+.sidenav-nav .nav-content a.active i {
+  background-color: #4154f1;
+}

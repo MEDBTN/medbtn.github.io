@@ -1,0 +1,24 @@
+<!-- ======= Sidebar ======= -->
+<aside class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+  <div class="logo-container">
+    <button class="menu-icon" (click)="toggleCollapse()">
+      <i class="bi bi-list"></i>
+    </button>
+    <div class="menu-title" @fadeInOut *ngIf="collapsed">menu</div>
+    <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+      <i class="bi bi-x"></i>
+    </button>
+  </div>
+  <ul class="sidenav-nav">
+    <li class="nav-item" *ngFor="let data of navData">
+      <a class="nav-link collapsed" [routerLink]="[data.routeLink]" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+        <i [class]="data.icon"></i>
+        <span @fadeInOut *ngIf="collapsed">
+          {{data.label}}
+        </span>
+      </a>
+    </li>
+  </ul>
+</aside><!-- End Sidebar-->
+
